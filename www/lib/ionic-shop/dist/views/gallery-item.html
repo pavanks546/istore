@@ -1,0 +1,8 @@
+<div class='list'>
+  <div class='card item item-avatar' ng-repeat='product in products track by $index'>
+    <img ng-src='{{product.images[0]}}' class='gallery-product-image'>
+    <h3 class='gallery-product-title'>{{product.title}}</h3>
+    <h3 class='gallery-product-price'>{{product.price}}</h3>
+    <div class='gallery-product-add col-50 col-offset-50' ng-click='addToCart(product)'>Add To Cart</div>
+  </div>
+</div>

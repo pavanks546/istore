@@ -1,0 +1,64 @@
+<!--<ion-header-bar class="bar-dark">
+  <h1 class="title">Ionic Shopping Cart</h1>
+  <button class='button icon ion-bag' ng-click='goToCart()'></button>
+</ion-header-bar>
+
+<ion-content>
+  <ion-gallery products='products'></ion-gallery>
+</ion-content>-->
+<!-- <ion-cart-footer path='checkoutPath'></ion-cart-footer> -->
+<!--
+changes done by rakesh
+-->
+
+<ion-header-bar class="bar bar-header bar-dark">
+  <button class='button icon ion-navicon' ng-click='gotoMenu()'></button>
+  <h1 class="title">Ionic Shopping Cart</h1>
+  <button class='button icon ion-bag' ng-click='goToCart()'></button>
+</ion-header-bar>
+<ion-side-menus>
+  <!-- Left menu -->
+  <ion-side-menu side="left">
+    <ion-content>
+      <customer-info></customer-info>
+      <side-menu></side-menu>
+    </ion-content>
+    <div class="bar bar-footer bar-stable">
+      <div class="title">Version 0.0</div>
+    </div>
+  </ion-side-menu>
+
+  <ion-side-menu-content>
+    <ion-content>
+      <div class="bar bar-header item-input-inset">
+        <label class="item-input-wrapper bar-clear">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="search" placeholder="Search Item">
+        </label>
+        <button class="button button-clear ion-funnel">
+        </button>
+      </div>
+      <ion-slide-box does-continue="true">
+        <ion-slide>
+          <div class='image-slide-div text-center'>
+            <img ng-src="images/leica.jpeg" class='image-slide'>
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div class='image-slide-div text-center'>
+            <img ng-src="images/leica.jpeg" class='image-slide'>
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div class='image-slide-div text-center'>
+            <img ng-src="images/leica.jpeg" class='image-slide'>
+          </div>
+        </ion-slide>
+      </ion-slide-box>
+      <ion-gallery products='products'></ion-gallery>
+    </ion-content>
+  </ion-side-menu-content>
+</ion-side-menus>
+
+
+<!-- <ion-cart-footer path='checkoutPath'></ion-cart-footer> -->

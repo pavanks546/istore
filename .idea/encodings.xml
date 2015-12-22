@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/www/lib/ionic-shop/dist/ion-cart.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/lib/ionic-shop/dist/views/cart-item.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/lib/ionic-shop/dist/views/gallery-item.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/lib/ionic-shop/dist/views/ion-address-footer.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/lib/ionic-shop/dist/views/ion-user-footer.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/lib/ionic-shop/dist/views/partials/add-address.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/lib/ionic-shop/dist/views/partials/amount.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/lib/ionic-shop/dist/views/partials/contact-information.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/lib/ionic-shop/dist/views/partials/customer-info.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/lib/ionic-shop/dist/views/partials/email.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/lib/ionic-shop/dist/views/partials/ion-user-footer.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/lib/ionic-shop/dist/views/partials/ion-user.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/lib/ionic-shop/dist/views/partials/no-saved-address.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/lib/ionic-shop/dist/views/partials/phoneNumber.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/lib/ionic-shop/dist/views/partials/search-filter.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/lib/ionic-shop/dist/views/partials/side-menu.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/lib/ionic-shop/dist/views/partials/swiggy-money.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/scripts/app.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/scripts/controllers/gallery.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/views/cart.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/views/gallery.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/views/searchFilter.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/views/userInformation.html" charset="UTF-8" />
+  </component>
+</project>
