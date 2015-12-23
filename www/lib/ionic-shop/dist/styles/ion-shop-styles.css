@@ -10,11 +10,11 @@
 /* CART */
 
 body {
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 .scroll-content {
-  
+
 }
 
 /* Gallery Content*/
@@ -48,7 +48,7 @@ body {
 }
 
 .gallery-product-div {
-  
+
 }
 
 .gallery-image-div {
@@ -109,11 +109,11 @@ body {
 }
 
 .product-item {
-  
+
 }
 
 .product-image {
-  max-height: 90px !important; 
+  max-height: 90px !important;
   max-width: 90px !important;
   right: 5px !important;
   cursor: pointer;
@@ -260,6 +260,18 @@ body {
 .zipcode-input {
 
 }
+.item-tab {
+  border: none !important;
+  background-color: #dddddd !important;
 
+}
 
-
+#map-canvas {
+  width: 100%;
+  height: 1020px;
+}
+.GPSPosition{
+  position: absolute;
+  bottom: 0;
+  right:0;
+}

@@ -3,11 +3,18 @@
   var app = angular.module('ionicShop.services', ['ionic']);
   //PRODUCT SERVICE HOLDING ALL ITEMS
   app.service('Products',['$http', function($http){
-
     this.galleryProducts = [];
     this.cartProducts = [];
     this.checkout = {};
-    this.sideBarNames=[];
+    var menuItems=[
+      {name:'Cart',url:'http://localhost:8100/#/cart', data:'10'},
+      {name:'Gallery',url:'http://localhost:8100/#/gallery',data:'10'},
+      {name:'Address',url:'http://localhost:8100/#/address',data:'10'},
+      {name:'UserInformation',url:'http://localhost:8100/#/userInformation',data:'10'},
+      {name:'SearchFilter',url:'http://localhost:8100/#/searchFilter',data:'10'},
+      {name:'LocationFinder',url:'http://localhost:8100/#/locationFinder',data:'10'},
+      {name:'checkout',url:'http://localhost:8100/#/checkout',data:'10'}
+                   ]
 
     this.addToCart = function(product){
       var productInCart = false;
@@ -77,9 +84,12 @@
     };
 
     this.getBarNames=function(){
-      for(var i=1;i<25;i++)
-        this.sideBarNames.push("Item - "+i);
-      return this.sideBarNames;
+
+      var sideBarNames=[];
+      angular.forEach(menuItems,function(item){
+       sideBarNames.push(item);
+      });
+      return sideBarNames;
     };
 
   }]);
@@ -228,9 +238,7 @@
             $ionicSlideBoxDelegate.update();
           });
         });
-
       });
-
     };
 
     return {
@@ -282,13 +290,10 @@
       scope.checkout = Products.checkout;
       //*** Total sum of products in usd by default ***\\
       scope.total = Products.total;
-
       //*** Add address input fields when has-address attribute is on ion-purchase element ***\\
       if (element[0].hasAttribute('has-address')) {scope.hasAddressDir = true;}
-
       //*** Add email input field when has-email attribute is on ion-purchase element ***\\
       if (element[0].hasAttribute('has-email')) { scope.hasEmailDir = true; }
-
       //*** Add name input fields when has-name attribute is on ion-purchase element ***\\
       if (element[0].hasAttribute('has-name')) { scope.hasNameDir = true;}
     };
@@ -319,10 +324,33 @@
 
   }]);
 /*changes done by rakesh*/
-  app.directive('sideMenu', ['Products', '$templateCache', function(Products, $templateCache){
-    var link = function(scope) {
+  app.directive('sideMenu', ['Products','$state', '$templateCache', function(Products,$state, $templateCache){
+    var link = function(scope,state) {
+      /*var menuItems=[
+        {name:'cart',url:'http://localhost:8100/#/cart', data:'10'},
+        {name:'gallery',url:'http://localhost:8100/#/gallery',data:'10'},
+        {name:'address',url:'http://localhost:8100/#/address',data:'10'},
+        {name:'userInformation',url:'http://localhost:8100/#/userInformation',data:'10'},
+        {name:'searchFilter',url:'http://localhost:8100/#/searchFilter',data:'10'},
+        {name:'locationFinder',url:'http://localhost:8100/#/locationFinder',data:'10'},
+        {name:'checkout',url:'http://localhost:8100/#/checkout',data:'10'}
+      ]*/
       scope.Tabs=Products.getBarNames();
+      /*scope.redirect= function(tab){
+       angular.forEach(menuItems,function(item){
+         if(tab.name == item.name || tab.url == item.url ){
+           window.location=tab.url+tab.data;
+         }
+       })
+      };*/
+
+      scope.redirect= function(tab){
+        window.location=tab.url;
+      };
     };
+
+
+
 
     return {
       restrict: 'AE',
@@ -381,14 +409,10 @@
       link: link
     };
   }]);
-
-
   //ADDITIONAL CONTENT DIRECTIVES
-
   //CHECKOUT CARD GROUP
   app.directive('checkoutCard',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -500,10 +524,8 @@
   }]);
 
   // ADDRESS GROUP
-
   app.directive('checkoutAddress',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -514,10 +536,8 @@
 
   }]);
 
-
   app.directive('ionAddress',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -525,12 +545,10 @@
       link: link,
       templateUrl: 'partials/ion-address.html'
     };
-
   }]);
 
   app.directive('innerAddress',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -538,11 +556,10 @@
       link: link,
       templateUrl: 'partials/inner-address.html'
     };
-
   }]);
+
   app.directive('addAddress',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -550,12 +567,10 @@
       link: link,
       templateUrl: 'partials/add-address.html'
     };
-
   }]);
 
   app.directive('addressLine1',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -563,11 +578,10 @@
       link: link,
       templateUrl: 'partials/address-line-1.html'
     };
-
   }]);
+
   app.directive('addressLine2',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -575,11 +589,10 @@
       link: link,
       templateUrl: 'partials/address-line-2.html'
     };
-
   }]);
+
   app.directive('addressLine3',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -587,12 +600,10 @@
       link: link,
       templateUrl: 'partials/address-line-3.html'
     };
-
   }]);
 
   app.directive('tagAddress',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -600,11 +611,10 @@
       link: link,
       templateUrl: 'partials/tag-address.html'
     };
-
   }]);
+
   app.directive('home',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -612,11 +622,10 @@
       link: link,
       templateUrl: 'partials/home.html'
     };
-
   }]);
+
   app.directive('work',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -624,11 +633,10 @@
       link: link,
       templateUrl: 'partials/work.html'
     };
-
   }]);
+
   app.directive('other',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -636,12 +644,10 @@
       link: link,
       templateUrl: 'partials/other.html'
     };
-
   }]);
 
   app.directive('ionAddressFooter',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -649,13 +655,11 @@
       link: link,
       templateUrl: 'ion-address-footer.html'
     };
-
   }]);
 
 
   app.directive('ionUser',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -663,12 +667,10 @@
       link: link,
       templateUrl: 'partials/ion-user.html'
     };
-
   }]);
 
   app.directive('swiggyMoney',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -676,12 +678,10 @@
       link: link,
       templateUrl: 'partials/swiggy-money.html'
     };
-
   }]);
 
   app.directive('amount',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -689,12 +689,10 @@
       link: link,
       templateUrl: 'partials/amount.html'
     };
-
   }]);
 
   app.directive('contactInformation',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -702,12 +700,10 @@
       link: link,
       templateUrl: 'partials/contact-information.html'
     };
-
   }]);
 
   app.directive('email',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -715,12 +711,10 @@
       link: link,
       templateUrl: 'partials/email.html'
     };
-
   }]);
 
   app.directive('phoneNumber',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -728,12 +722,10 @@
       link: link,
       templateUrl: 'partials/phoneNumber.html'
     };
-
   }]);
 
   app.directive('noSavedAddress',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -741,12 +733,10 @@
       link: link,
       templateUrl: 'partials/no-saved-address.html'
     };
-
   }]);
 
   app.directive('ionUserFooter',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -754,7 +744,6 @@
       link: link,
       templateUrl: 'ion-user-footer.html'
     };
-
   }]);
 
   app.directive('ionSearchFilter',  ['$templateCache', function( $templateCache){
@@ -767,12 +756,47 @@
       link: link,
 
     };
-
   }]);
+
+  app.directive('ionLocationAddress',  ['$templateCache', function( $templateCache){
+    var link = function(scope, element, attr) {
+    };
+
+    return {
+      restrict: 'AEC',
+      templateUrl: 'partials/ion-location-address.html',
+      link: link,
+
+    };
+  }]);
+
+  app.directive('useGps',  ['$templateCache', function( $templateCache){
+    var link = function(scope, element, attr) {
+    };
+
+    return {
+      restrict: 'AEC',
+      templateUrl: 'partials/ion-use-gps.html',
+      link: link,
+
+    };
+  }]);
+
+  app.directive('pickLocation',  ['$templateCache', function( $templateCache){
+    var link = function(scope, element, attr) {
+    };
+
+    return {
+      restrict: 'AEC',
+      templateUrl: 'partials/ion-pick-location.html',
+      link: link,
+
+    };
+  }]);
+
   //ADDRESS LINE ONE INPUT
   app.directive('addressOneInput',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -793,7 +817,6 @@
       scope.onAddrTwoFocus = function(){
 
       };
-
     };
 
     return {
@@ -813,7 +836,6 @@
       scope.onCityFocus = function(){
 
       };
-
     };
 
     return {
@@ -833,7 +855,6 @@
       scope.onStateFocus = function(){
 
       };
-
     };
 
     return {
@@ -879,7 +900,6 @@
 
   app.directive('checkoutName',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -887,14 +907,12 @@
       link: link,
       templateUrl: 'partials/name-input.html'
     };
-
   }]);
 
 
   //FIRST NAME
   app.directive('lastNameInput',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
 
     return {
@@ -902,14 +920,13 @@
       link: link,
       templateUrl: 'partials/first-name-input.html'
     };
-
   }]);
 
   //LAST NAME
   app.directive('firstNameInput',['$templateCache', function($templateCache){
     var link = function(scope, element, attr) {
-
     };
+
     return {
       restrict: 'AE',
       link: link,
@@ -947,10 +964,7 @@
       templateUrl: 'partials/email-input.html'
     };
   }]);
-
-
   // CUSTOMIZATION DIRECTIVES
-
   app.directive('mouseDownUp', function(){
     var link = function(scope, element, attr) {
 
@@ -972,7 +986,6 @@
 
   app.directive('cartAdd', ['$timeout', function($timeout){
     var link = function(scope, element, attr){
-
       scope.addText = 'Add To Cart';
 
       element.on('click', function(){
@@ -1000,8 +1013,8 @@ $templateCache.put("cart-item.html","<div ng-if=\'!emptyProducts\'>\n  <div clas
 $templateCache.put("checkout-footer.html","<div class=\'title purchase-footer\'>Pay</div>");
 $templateCache.put("checkout.html","\n<span class=\'checkout-form-description\'>Please enter your credit card details:</span>\n\n<div class=\'list checkout-form\'>\n  <checkout-name ng-if=\'hasNameDir\'></checkout-name>\n  <checkout-card></checkout-card>\n  <checkout-address ng-if=\'hasAddressDir\'></checkout-address>\n  <checkout-email ng-if=\'hasEmailDir\'></checkout-email>\n</div>\n\n<h2 class=\'checkout-total\'>Total: ${{total}}</h2>\n");
 $templateCache.put("gallery-item.html","<div class='list'><div class='card item item-avatar' ng-repeat='product in products track by $index'><img ng-src='{{product.images[0]}}' class='gallery-product-image'><h3 class='gallery-product-title'>{{product.title}}</h3><h3 class='gallery-product-price'>${{product.price}}</h3><div class='gallery-product-add col-50 col-offset-50' ng-click=\'addToCart(product)\'>Add To Cart</div></div></div>");
-$templateCache.put("partials/side-menu.html","<div ng-repeat='tab in Tabs track by $index'><div class=\'item item-icon-left\'>{{tab}}</div></div>");
-$templateCache.put("partials/customer-info.html","<div class=\'list\'><div class=\'item item-avatar\'><img ng-src=\'{{Customer.imageURL}}\'><h2>{{Customer.Name}}</h2><p>{{Customer.Email}}</p><p>{{Customer.Contact}}</p></div></div>");
+$templateCache.put("partials/side-menu.html","<div ng-repeat='tab in Tabs track by $index'><div class=\'item item-tab item-icon-left\' ng-click='redirect(tab)'>{{tab.name}}</div></div>");
+$templateCache.put("partials/customer-info.html","<div class=\'list\'><div class=\'item item-avatar\'><img class='img-circle' ng-src=\'{{Customer.imageURL}}\'><h2>{{Customer.Name}}</h2><p>{{Customer.Email}}</p><p>{{Customer.Contact}}</p></div></div>");
 $templateCache.put("partials/address-line-one.html","<label class=\'item item-input address-line-one\'>\n  <input type=\'text\' ng-model=\'checkout.addressLineOne\' placeholder=\'Address Line 1\'>\n</label>");
 $templateCache.put("partials/address-line-two.html","<label class=\'item item-input address-line-two\'>\n  <input type=\'text\' ng-model=\'checkout.addressLineTwo\' placeholder=\'Address Line 2\'>\n</label>");
 $templateCache.put("partials/address.html","<div class=\'item item-divider\'>Address: </div>\n<address-one-input></address-one-input>\n<address-two-input></address-two-input>\n<city-input></city-input>\n<state-input></state-input>\n<zip-input></zip-input>\n");
@@ -1016,6 +1029,9 @@ $templateCache.put("partials/phoneNumber.html","<a class=\'item item-icon-left\'
 $templateCache.put("partials/no-saved-address.html","<div class=\'item item-button-right\'>No saved Addresses <button class=\'button button-clear button-balanced\'>ADD NEW</button></div>");
 $templateCache.put("ion-user-footer.html","<button class=\'button button-block button-light\'>LOGOUT</button>");
 $templateCache.put("partials/inner-address.html","<div class=\'list card\'>\n<add-address></add-address>\n<div ><address-line-1></address-line-1>\n<address-line-2></address-line-2>\n<address-line-3></address-line-3>\n</div></div><div class=\'list card\'>\n<tag-address></tag-address>\n <div class=\'item item-body tabs tabs-icon-top \' style='height: 70px'><div class=\'col-90 row\'><home class=\'col-33\'></home>\n<work class=\'col-33\'></work>\n<other class=\'col-33\'></other></div></div></div>\n");
+$templateCache.put("partials/ion-location-address.html","<div class=\'list card\'><use-gps></use-gps><div class=\'item item-body tabs tabs-icon-top \' style='height:70px'><pick-location style='margin-top:30px' ></pick-location></div></div>");
+$templateCache.put("partials/ion-use-gps.html","<br class=\'item item-left\'><h4>Place pin on your exact delivery location</h4><h4 class=\' item-avatar\' style='margin-left: 40px;color: orange'>Use GPS</h4></div> ");
+$templateCache.put("partials/ion-pick-location.html","<a class=\'tab-item\' style='color: green;font-size: 15px'>PICK LOCATION</a>");
 $templateCache.put("partials/card-cvc-input.html","<label class=\'item item-input card-cvc-input\'>\n  <input type=\'tel\' ng-model=\'checkout.cvc\' ng-focus=\'onCvcFocus()\' ng-blur=\'onCvcBlur()\' placeholder=\'CVC\'>\n  <i class=\"icon\" style=\'width: 40px; text-align: center;\'></i>\n</label>");
 $templateCache.put("partials/card-exp-input.html","<label class=\'item item-input card-exp-input\'>\n  <input type=\'tel\' ng-model=\'checkout.exp\' ng-focus=\'onExpFocus()\' ng-blur=\'onExpBlur()\' placeholder=\'MM/YYYY\'>\n  <i  class=\"icon\" style=\'width: 40px; text-align: center;\'></i>\n</label>");
 $templateCache.put("partials/card-form.html","<div class=\'item item-divider\'>Card Info: </div>\n<card-num-input></card-num-input>\n<card-exp-input></card-exp-input>\n<card-cvc-input></card-cvc-input>");

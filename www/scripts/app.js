@@ -38,9 +38,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: 'CartController'
     })
     .state('checkout',{
-      url: '/checkout',
-      templateUrl: 'views/checkout.html',
-      controller: 'CheckoutController'
+        url: '/checkout',
+        templateUrl: 'views/checkout.html',
+        controller: 'CheckoutController'
     })
     .state('gallery', {
       url: '/gallery',
@@ -61,8 +61,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url: '/searchFilter',
       templateUrl: 'views/searchFilter.html',
       controller: 'searchFilterController'
+    })
+    .state('locationFinder', {
+      url: '/locationFinder',
+      templateUrl: 'views/locationFinder.html',
+      controller: 'locationFinderController'
     });
-
 
     $urlRouterProvider.otherwise('checkout');
 
